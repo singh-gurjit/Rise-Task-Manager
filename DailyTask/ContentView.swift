@@ -11,9 +11,12 @@ import CoreData
 
 struct ContentView: View {
     
+    //create variable for new task
     @State var newTask = ""
+    //create variable to handle new task alert
     @State var showingEmptyNameAlert = false
     @Environment(\.managedObjectContext) var moc
+    //fetch record from database
     @FetchRequest(entity: Tasks.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Tasks.displayOrder, ascending: false)]) var tasks: FetchedResults<Tasks>
     
     var body: some View {
@@ -21,15 +24,21 @@ struct ContentView: View {
             List {
                 Section(header: Text("New Task")) {
                     HStack {
+                        //textField for new task
                         TextField("Name", text: $newTask)
+                        //add button to add new task
                         Button(action: {
                             if (self.newTask.isEmpty) {
+                                //show alert if
                                 self.showingEmptyNameAlert.toggle()
                             } else {
+                                //get current date
                                 let getDate = getCurrentDate()
                                 let formatter = DateFormatter()
                                 formatter.dateFormat = "d MMM y"
+                                //change string to date
                                 let changedDate = formatter.date(from: getDate)
+                                //insert values into database
                                 let taskContext = Tasks(context: self.moc)
                                 taskContext.id = UUID()
                                 taskContext.title = "\(self.newTask)"
@@ -37,29 +46,34 @@ struct ContentView: View {
                                 taskContext.date = changedDate
                                 taskContext.status = false
                                 try? self.moc.save()
+                                //set new task textfield to empty
                                 self.newTask = ""
                             }
                         }){
                             Image(systemName: "plus.circle.fill").foregroundColor(Color.orange).imageScale(.large)
                             } .alert(isPresented: $showingEmptyNameAlert) {
+                                //display alert if new task is empty
                                 Alert(title: Text("Alert"), message: Text("Please enter new task name."), dismissButton: .default(Text("OK")))
                             }
                     }
                 }
                 Section(header: Text("Your Tasks")) {
                     ForEach(tasks, id: \.self) { task in
-                        
+                        //display fetched record in list view
                             HStack {
                             Button(action: {
+                                //check if task is completed or not
                                 var changeStatus: Bool
                                 if task.status == true {
+                                    //change bool value if completed task button clicked
                                     changeStatus = false
                                 } else {
                                     changeStatus = true
                                 }
+                                //update data if user clicked on task completed button
                                 updateData(taskId: task.id!, astatus: changeStatus)
                             }) {
-                                
+                                //strike task value if completed or display as its
                                 if(task.status == true) {
                                     HStack{
                                     Image(systemName: "checkmark.circle.fill").imageScale(.large).font(.headline)
@@ -75,6 +89,7 @@ struct ContentView: View {
                             }
                                 
                                 Spacer()
+                                //convert date to string and display into text view
                                 Text(" "+changeDateToString(adate: task.date!)).font(.subheadline)
                             }
                         
@@ -82,9 +97,11 @@ struct ContentView: View {
                     //Delete item function
                         .onDelete{ (indexSet) in
                             for offset in indexSet {
+                                //delete row from list view
                                 let task = self.tasks[offset]
                                 self.moc.delete(task)
                             }
+                            //save context
                             try? self.moc.save()
                     }
                     
@@ -95,6 +112,7 @@ struct ContentView: View {
     }
 }
 
+//function to get current date
 func getCurrentDate() -> String {
     let today = Date()
     let formatter = DateFormatter()
@@ -103,6 +121,7 @@ func getCurrentDate() -> String {
     return date
 }
 
+//function to change date to string
 func changeDateToString(adate: Date) -> String {
         let adate =  adate
         //let date = Date()
@@ -112,10 +131,7 @@ func changeDateToString(adate: Date) -> String {
         return result
 }
 
-func checkStatus() {
-    
-}
-
+//update data if user clicked on completed task button
 func updateData(taskId: UUID, astatus: Bool) {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
     let managedContext = appDelegate.persistentContainer.viewContext
