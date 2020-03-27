@@ -51,16 +51,16 @@ struct ContentView: View {
                             }
                         }){
                             Image(systemName: "plus.circle.fill").foregroundColor(Color.orange).imageScale(.large)
-                            } .alert(isPresented: $showingEmptyNameAlert) {
-                                //display alert if new task is empty
-                                Alert(title: Text("Alert"), message: Text("Please enter new task name."), dismissButton: .default(Text("OK")))
-                            }
+                        } .alert(isPresented: $showingEmptyNameAlert) {
+                            //display alert if new task is empty
+                            Alert(title: Text("Alert"), message: Text("Please enter new task name."), dismissButton: .default(Text("OK")))
+                        }
                     }
                 }
                 Section(header: Text("Your Tasks")) {
                     ForEach(tasks, id: \.self) { task in
                         //display fetched record in list view
-                            HStack {
+                        HStack {
                             Button(action: {
                                 //check if task is completed or not
                                 var changeStatus: Bool
@@ -76,25 +76,25 @@ struct ContentView: View {
                                 //strike task value if completed or display as its
                                 if(task.status == true) {
                                     HStack{
-                                    Image(systemName: "checkmark.circle.fill").imageScale(.large).font(.headline)
-                                    Text("\(task.title!) \(String(task.status))").font(.headline).strikethrough()
+                                        Image(systemName: "checkmark.circle.fill").imageScale(.large).font(.headline)
+                                        Text("\(task.title!) \(String(task.status))").font(.headline).strikethrough()
                                     }
                                 } else {
                                     HStack{
-                                    Image(systemName: "circle").imageScale(.large).font(.headline)
-                                    Text("\(task.title!)").font(.headline)
+                                        Image(systemName: "circle").imageScale(.large).font(.headline)
+                                        Text("\(task.title!)").font(.headline)
                                     }
                                 }
                                 
                             }
-                                
-                                Spacer()
-                                //convert date to string and display into text view
-                                Text(" "+changeDateToString(adate: task.date!)).font(.subheadline)
-                            }
+                            
+                            Spacer()
+                            //convert date to string and display into text view
+                            Text(" "+changeDateToString(adate: task.date!)).font(.subheadline)
+                        }
                         
                     }
-                    //Delete item function
+                        //Delete item function
                         .onDelete{ (indexSet) in
                             for offset in indexSet {
                                 //delete row from list view
@@ -105,9 +105,9 @@ struct ContentView: View {
                             try? self.moc.save()
                     }
                     
-                    }
+                }
             }.navigationBarItems(trailing: EditButton().foregroundColor(Color.orange))
-            .navigationBarTitle("Tasks")
+                .navigationBarTitle("Tasks")
         }
     }
 }
@@ -123,12 +123,12 @@ func getCurrentDate() -> String {
 
 //function to change date to string
 func changeDateToString(adate: Date) -> String {
-        let adate =  adate
-        //let date = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "d MMM y"
-        let result = formatter.string(from: adate)
-        return result
+    let adate =  adate
+    //let date = Date()
+    let formatter = DateFormatter()
+    formatter.dateFormat = "d MMM y"
+    let result = formatter.string(from: adate)
+    return result
 }
 
 //update data if user clicked on completed task button
