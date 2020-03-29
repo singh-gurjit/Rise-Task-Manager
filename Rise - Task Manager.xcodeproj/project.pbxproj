@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E299B4A32424112400B39275 /* DailyTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E299B4A32424112400B39275 /* Rise - Task Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rise - Task Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E299B4A62424112400B39275 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E299B4A82424112400B39275 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E299B4AB2424112400B39275 /* DailyTask.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DailyTask.xcdatamodel; sourceTree = "<group>"; };
@@ -50,7 +50,7 @@
 		E299B4A42424112400B39275 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E299B4A32424112400B39275 /* DailyTask.app */,
+				E299B4A32424112400B39275 /* Rise - Task Manager.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -81,9 +81,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E299B4A22424112400B39275 /* DailyTask */ = {
+		E299B4A22424112400B39275 /* Rise - Task Manager */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E299B4BA2424112600B39275 /* Build configuration list for PBXNativeTarget "DailyTask" */;
+			buildConfigurationList = E299B4BA2424112600B39275 /* Build configuration list for PBXNativeTarget "Rise - Task Manager" */;
 			buildPhases = (
 				E299B49F2424112400B39275 /* Sources */,
 				E299B4A02424112400B39275 /* Frameworks */,
@@ -93,9 +93,9 @@
 			);
 			dependencies = (
 			);
-			name = DailyTask;
+			name = "Rise - Task Manager";
 			productName = DailyTask;
-			productReference = E299B4A32424112400B39275 /* DailyTask.app */;
+			productReference = E299B4A32424112400B39275 /* Rise - Task Manager.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -113,7 +113,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E299B49E2424112400B39275 /* Build configuration list for PBXProject "DailyTask" */;
+			buildConfigurationList = E299B49E2424112400B39275 /* Build configuration list for PBXProject "Rise - Task Manager" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -126,7 +126,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E299B4A22424112400B39275 /* DailyTask */,
+				E299B4A22424112400B39275 /* Rise - Task Manager */,
 			);
 		};
 /* End PBXProject section */
@@ -327,7 +327,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E299B49E2424112400B39275 /* Build configuration list for PBXProject "DailyTask" */ = {
+		E299B49E2424112400B39275 /* Build configuration list for PBXProject "Rise - Task Manager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E299B4B82424112600B39275 /* Debug */,
@@ -336,7 +336,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E299B4BA2424112600B39275 /* Build configuration list for PBXNativeTarget "DailyTask" */ = {
+		E299B4BA2424112600B39275 /* Build configuration list for PBXNativeTarget "Rise - Task Manager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E299B4BB2424112600B39275 /* Debug */,
